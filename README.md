@@ -7,8 +7,11 @@ thingler
 
 * Install node
 * Install couchdb
-* Install rubygems
-* gem install less
+* Install node package manager
+* npm install less
+* npm install journey
+* npm install node-static
+* npm install cradle
 
 License
 -------

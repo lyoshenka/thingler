@@ -3,6 +3,13 @@ thingler
 
 > Hello, I am [Thingler](http://thingler.com), and this is my source code. Feel free to browse.
 
+## Setup
+
+* Install node
+* Install couchdb
+* Install rubygems
+* gem install less
+
 License
 -------
 

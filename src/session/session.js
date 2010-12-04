@@ -7,7 +7,7 @@ var store = {};
 this.store = store;
 
 // Prune un-used sessions every hour
-setInterval(function () { exports.prune() }, 3600);
+setInterval(function () { exports.prune(); }, 3600);
 
 this.maxAge = 3600 * 24; // 1 day
 

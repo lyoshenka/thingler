@@ -22,7 +22,7 @@ var KEY = {
     LEFT:     37,
     UP:       38,
     RIGHT:    39,
-    DOWN:     40,
+    DOWN:     40
 };
 
 dom.sortable = function (list, callback) {
@@ -93,12 +93,12 @@ dom.draggable = function (elem) {
 
         if (source.nodeName === 'LI' || source.nodeName === 'DIV') {
             while (source !== elem) {
-                if (source === document.body) { return true }
-                else                          { source = source.parentNode }
-            } 
-        } else { return true }
+                if (source === document.body) { return true; }
+                else                          { source = source.parentNode; }
+            }
+        } else { return true; }
 
-        if (this.hasClass('editing')) { return true }
+        if (this.hasClass('editing')) { return true; }
 
         var pos   = dom.getPosition(this);
         var clone = this.cloneNode(true);
@@ -121,7 +121,7 @@ dom.draggable = function (elem) {
 };
 
 dom.removeClass = function (e, name) {
-    if (! e.className) { return }
+    if (! e.className) { return; }
 
     var classes = e.className.split(' '),
         index = classes.indexOf(name);
@@ -179,13 +179,13 @@ dom.flash = function (element) {
         element.style.backgroundColor = dom.hsla(60, 90, 95, alpha / 100);
         alpha += inc;
 
-        if (alpha === 100) { inc = -0.3 }
-        if (alpha <= 0)    { clearInterval(timer), element.style.backgroundColor = '' }
+        if (alpha === 100) { inc = -0.3; }
+        if (alpha <= 0)    { clearInterval(timer), element.style.backgroundColor = ''; }
     }, 5);
 };
 
 dom.disableSelection = function (element) {
-    element.onselectstart = function () { return false };
+    element.onselectstart = function () { return false; };
     element.unselectable = "on";
 };
 dom.enableSelection = function (element) {
@@ -229,7 +229,7 @@ dom.contentWidth = function (element, str) {
     return Math.max(width + 1, 2);
 };
 dom.autosizing = function (input) {
-    if (input.AUTOSIZING) { return input }
+    if (input.AUTOSIZING) { return input; }
 
     var resize = function (element, str) {
         return element.style.width = dom.contentWidth(element, str) + 'px';
@@ -262,7 +262,7 @@ dom.autosizing = function (input) {
 Node.prototype.emit = function (type, data) {
     var event = document.createEvent('Events');
     event.initEvent(type, true, true);
-    for (var k in data) { event[k] = data[k] }
+    for (var k in data) { event[k] = data[k]; }
     return this.dispatchEvent(event);
 };
 Node.prototype.on = function (event, listener, c) {
@@ -302,8 +302,8 @@ HTMLElement.prototype.insertAfter = function (element, ref) {
 HTMLElement.prototype.isDescendantOf = function (element) {
     var source = this;
     while (source !== document) {
-        if (source === element) { return true }
-        else                    { source = source.parentNode }
+        if (source === element) { return true; }
+        else                    { source = source.parentNode; }
     }
     return false;
 };

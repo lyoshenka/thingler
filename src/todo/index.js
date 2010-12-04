@@ -27,7 +27,7 @@ this.get = function (res, id, params, session) {
                 res.send(200, {}, doc);
             }
         }
-    })
+    });
 };
 
 //

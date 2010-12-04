@@ -67,7 +67,7 @@ var room = {
         handleTagFilter(hash);
         dom.sortable(list, handleSort);
 
-        footer.style.visibility = 'visible'
+        footer.style.visibility = 'visible';
 
         // Before shutdown, do one last sync
         window.onbeforeunload = function (e) {
@@ -85,7 +85,7 @@ var room = {
                 last:    last
             }, function (err, doc) {
                 if (err) {
-                    if (err.status !== 404) { console.log(err) }
+                    if (err.status !== 404) { console.log(err); }
                     room.changes.rollback(changes);
                 } else if (doc && doc.commits) {
                     room.rev = doc.rev || 0;
@@ -127,8 +127,8 @@ var clock = {
         // One hour maximum interval
         this.interval = Math.min(interval, 3600000);
 
-        if (this.timer)   { clearInterval(this.timer) }
-        if (this.timeout) { clearTimeout(this.timeout) }
+        if (this.timer)   { clearInterval(this.timer); }
+        if (this.timeout) { clearTimeout(this.timeout); }
 
         this.timer = setInterval(function () {
             clock.tick();
@@ -187,8 +187,8 @@ dom.tokenizing(input, input.parentNode, tagPattern).on('new', function (e) {
     room.changes.push('insert', id, item);
 }, false);
 
-input.parentNode.on('focus', function () { this.addClass('focused') })
-                .on('blur',  function () { this.removeClass('focused') });
+input.parentNode.on('focus', function () { this.addClass('focused'); })
+                .on('blur',  function () { this.removeClass('focused'); });
 
 function parseTitle(str) {
     return str.replace(/&/, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/^\s+|\s+$/, '');
@@ -263,7 +263,7 @@ xhr.resource(id).get(function (err, doc) {
 
     function go(page) {
         document.getElementById(page).style.display = 'block';
-        if (page === 'page') { input.focus() }
+        if (page === 'page') { input.focus(); }
     }
 });
 
@@ -415,7 +415,7 @@ function createItem(item) {
     // We return `false` from `onmousedown` to stop
     // `onblur` from triggering.
     //
-    edit.onmousedown = function (e) { return false };
+    edit.onmousedown = function (e) { return false; };
     edit.onclick     = function (e) {
         handleEdit(clone);
         return false;
@@ -538,7 +538,7 @@ function handleEdit(element) {
     }
 }
 function handleEditSave(e) {
-    if (! this.parentNode.parentNode.hasClass('editing')) { return }
+    if (! this.parentNode.parentNode.hasClass('editing')) { return; }
 
     var div    = this.parentNode,
         tokens = div.querySelector('.tokens'),

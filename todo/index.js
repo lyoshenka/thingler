@@ -13,7 +13,8 @@ this.get = function (req, res, id, params, session) {
     id = id.toString();
     todo.get(id, function (e, doc) {
         if (e) {
-            res.send(doc.headers.status, {}, e);
+            // res.send(doc.headers.status, {}, e);
+            res.send(500, {}, e);
         } else {
             if (doc.password) {
                 if (! session) {

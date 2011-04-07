@@ -22,7 +22,8 @@ setInterval(function () {
 
 this.post = function (req, res, id, params, session) {
     todo.get(id, function (err, doc) {
-        if (err) { return res.send(doc.headers.status, {}, err) }
+        // if (err) { return res.send(doc.headers.status, {}, err) }
+        if (err) { return res.send(500, {}, err) }
 
         var changes = params.changes;
 

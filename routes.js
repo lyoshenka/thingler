@@ -3,9 +3,9 @@ var todo  = require('./todo'),
     changes = require('./changes');
 
 function auth(callback) {
-    return function (res, id, params) {
+    return function (req, res, id, params) {
         var sess = session.resource.retrieve(this.request);
-        callback(res, id, params, sess);
+        callback(req, res, id, params, sess);
     };
 }
 //

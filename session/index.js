@@ -5,7 +5,7 @@ var md5 = require('../md5');
 
 this.resource = session;
 
-this.post = function (res, id, params, sess) {
+this.post = function (req, res, id, params, sess) {
     id = id.toString();
     if (sess) {
         todo.get(id, function (e, doc) {
@@ -22,6 +22,6 @@ this.post = function (res, id, params, sess) {
         res.send(401);
     }
 };
-this.del = function (res, id, params) {
+this.del = function (req, res, id, params) {
 
 };

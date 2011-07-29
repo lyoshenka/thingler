@@ -29,7 +29,7 @@ this.get = function (req, res, id, params, session) {
                 res.send(200, {}, doc);
             }
         }
-    })
+    });
 };
 
 //

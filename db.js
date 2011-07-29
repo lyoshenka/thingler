@@ -10,4 +10,4 @@ this.database = this.connection.database('thingler');
 
 this.parseRev = function (rev) {
     return parseInt(rev.match(/^(\d+)-/)[1]);
-}
+};

@@ -22,8 +22,8 @@ setInterval(function () {
 
 this.post = function (req, res, id, params, session) {
     todo.get(id, function (err, doc) {
-        // if (err) { return res.send(doc.headers.status, {}, err) }
-        if (err) { return res.send(500, {}, err) }
+        // if (err) { return res.send(doc.headers.status, {}, err); }
+        if (err) { return res.send(500, {}, err); }
 
         var changes = params.changes;
 
@@ -80,7 +80,7 @@ this.get = function (req, res, id, params) {
 this.handlers = {
     insert: function (doc, change) {
         if (doc.items.length < 256) {
-            if (! Array.isArray(change.tags)) { return }
+            if (! Array.isArray(change.tags)) { return; }
             doc.items.unshift({
                 id:    change.id,
                 title: sanitize(change.title),

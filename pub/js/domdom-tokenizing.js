@@ -17,13 +17,13 @@ dom.tokenizing = function (element, container, pattern) {
     // to make it seem like the container is the input.
     //
     container.on('mousedown', function (e) {
-        if      (e.target.nodeName === 'INPUT')        { return }
-        else if (! e.target.isDescendantOf(container)) { return }
+        if      (e.target.nodeName === 'INPUT')        { return; }
+        else if (! e.target.isDescendantOf(container)) { return; }
 
         container.emit('focus');
 
-        if (tokens.children.length > 0) { tokens.lastChild.lastChild.focus() }
-        else                            { element.focus(), element.setCursor(element.value.length) }
+        if (tokens.children.length > 0) { tokens.lastChild.lastChild.focus(); }
+        else                            { element.focus(), element.setCursor(element.value.length); }
         e.preventDefault();
     });
 
@@ -69,8 +69,8 @@ dom.tokenizing.removeToken = function (elem) {
     this.tokens.removeChild(elem.parentNode);
 };
 dom.tokenizing.parseTokens = function (tokens) {
-    return tokens.children.map(function (li)   { return li.firstChild.value })
-                          .filter(function (t) { return !!t });
+    return tokens.children.map(function (li)   { return li.firstChild.value; })
+                          .filter(function (t) { return !!t; });
 };
 dom.tokenizing.createTokens = function (tokens) {
     var that = this;
@@ -86,8 +86,8 @@ dom.tokenizing.createToken = function (str, ref) {
 
     li.appendChild(token);
 
-    if (ref) { this.tokens.insertBefore(li, ref) }
-    else     { this.tokens.appendChild(li) }
+    if (ref) { this.tokens.insertBefore(li, ref); }
+    else     { this.tokens.appendChild(li); }
 
     token.value = str;
     token.focus();
@@ -123,7 +123,7 @@ dom.tokenizing.createInput = function (li) {
         if (e.keyCode === KEY.LEFT) {
             if (input.parentNode === that.tokens.firstChild) {
                 that.element.focus();
-                that.element.setCursor(length)
+                that.element.setCursor(length);
                 that.element.autosize();
                 e.preventDefault();
             } else {
@@ -147,7 +147,7 @@ dom.tokenizing.createInput = function (li) {
             var value = input.value + String.fromCharCode(e.charCode);
             var match = value.match(that.pattern);
 
-            if (e.keyCode === KEY.SPACE) { e.preventDefault() }
+            if (e.keyCode === KEY.SPACE) { e.preventDefault(); }
             else if (match) {
                 input.value = '';
                 input.autosize();

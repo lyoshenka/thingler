@@ -12,7 +12,7 @@ this.Todo = function (attributes) {
     this.items = [];
     this.timestamp = new(Date)().toUTCString();
 
-    for (var k in attributes) { this[k] = attributes[k] }
+    for (var k in attributes) { this[k] = attributes[k]; }
 };
 this.Todo.prototype = {
     get json () {

@@ -30,7 +30,7 @@ var file   = new(static.Server)('./pub', { cache: env === 'production' ? 3600 : 
 this.server = http.createServer(function (request, response) {
     var body = [], log;
 
-    request.addListener('data', function (chunk) { body.push(chunk) });
+    request.addListener('data', function (chunk) { body.push(chunk); });
     request.addListener('end', function () {
         log = [request.method, request.url, body.join('')];
 
@@ -68,7 +68,7 @@ this.server = http.createServer(function (request, response) {
                     });
                 } else {
                     session.create(request, function (header) {
-                        if (header) { result.headers['Set-Cookie'] = header['Set-Cookie'] }
+                        if (header) { result.headers['Set-Cookie'] = header['Set-Cookie']; }
                         finish(result.status, result.headers, result.body);
                     });
                 }

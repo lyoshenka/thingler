@@ -9,11 +9,12 @@ this.resource = todo;
 //
 // Retrieve a list
 //
-this.get = function (res, id, params, session) {
+this.get = function (req, res, id, params, session) {
     id = id.toString();
     todo.get(id, function (e, doc) {
         if (e) {
-            res.send(doc.headers.status, {}, e);
+            // res.send(doc.headers.status, {}, e);
+            res.send(500, {}, e);
         } else {
             if (doc.password) {
                 if (! session) {
@@ -34,7 +35,7 @@ this.get = function (res, id, params, session) {
 //
 // Update a list, or create a named list
 //
-this.put = function (res, id, params) {
+this.put = function (req, res, id, params) {
     todo.save(id.toString(), function (e, doc) {
         if (e) {
             res.send(doc.headers.status, {}, e);

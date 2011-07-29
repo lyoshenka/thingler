@@ -20,9 +20,10 @@ setInterval(function () {
     });
 }, hour);
 
-this.post = function (res, id, params, session) {
+this.post = function (req, res, id, params, session) {
     todo.get(id, function (err, doc) {
-        if (err) { return res.send(doc.headers.status, {}, err) }
+        // if (err) { return res.send(doc.headers.status, {}, err) }
+        if (err) { return res.send(500, {}, err) }
 
         var changes = params.changes;
 
@@ -72,7 +73,7 @@ this.post = function (res, id, params, session) {
     });
 };
 
-this.get = function (res, id, params) {
+this.get = function (req, res, id, params) {
     res.send(200, {}, { changes: cache[id] });
 };
 

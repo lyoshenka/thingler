@@ -6,6 +6,8 @@ this.connection = new(cradle.Connection)({
     port: 443 //5984
 });
 
+console.log(this.connection);
+
 this.database = this.connection.database('thingler');
 
 this.parseRev = function (rev) {

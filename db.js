@@ -2,7 +2,8 @@
 var cradle = require('cradle');
 
 this.connection = new(cradle.Connection)({
-    host:  '127.0.0.1',
+//    host:  '127.0.0.1',
+    host: process.env['CLOUDANT_URL'],
     port:  5984
 });
 

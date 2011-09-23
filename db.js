@@ -1,9 +1,13 @@
 var cradle = require('cradle');
 
+// Get the username and password from the url
+var cloudant_parts = /(\w+)\:\/\/([^:]+)\:([^@]+)@(.+)/.exec(process.env['CLOUDANT_URL']);
+
 this.connection = new(cradle.Connection)({
 //    host:  '127.0.0.1',
-    host: process.env['CLOUDANT_URL'],
-    port: 443 //5984
+    host: cloudant_parts[1] + '://' + cloudant_parts[4],
+    port: 443, //5984
+    auth: { username: cloudant_parts[2], password:cloudant_parts[3] }
 });
 
 console.log(this.connection);

@@ -1,4 +1,3 @@
-
 var fs = require('fs');
 var sys = require('sys');
 var http = require('http');
@@ -12,7 +11,8 @@ var todo = require('./todo').resource,
     routes = require('./routes');
 
 var options = {
-    port: parseInt(process.argv[2]) || 8000,
+    //port: parseInt(process.argv[2]) || 8000,
+    port: process.env.PORT,
     lock: '/tmp/thinglerd.pid'
 };
 

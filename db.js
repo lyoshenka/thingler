@@ -10,8 +10,6 @@ this.connection = new(cradle.Connection)({
     auth: { username: cloudant_parts[2], password:cloudant_parts[3] }
 });
 
-console.log(this.connection);
-
 this.database = this.connection.database('thingler');
 
 this.parseRev = function (rev) {

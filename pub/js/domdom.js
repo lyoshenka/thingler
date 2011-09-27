@@ -91,6 +91,8 @@ dom.draggable = function (elem) {
     elem.onmousedown = function (e) {
         var source = e.srcElement || e.target;
 
+        if (e.button != 0) { return true; } // on left mouse button only. in ie, button=1 for left click. in w3c, button=0 for left click.
+
         if (source.nodeName === 'LI' || source.nodeName === 'DIV') {
             while (source !== elem) {
                 if (source === document.body) { return true; }

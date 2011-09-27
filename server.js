@@ -2,7 +2,7 @@ var fs = require('fs');
 var sys = require('sys');
 var http = require('http');
 var Buffer = require('buffer').Buffer;
-var logger = require('logger');
+var logger = require('./logger');
 
 var journey = require('journey'),
     static = require('node-static');

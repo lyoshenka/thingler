@@ -1,8 +1,8 @@
-
 var fs = require('fs');
 var sys = require('sys');
 var http = require('http');
 var Buffer = require('buffer').Buffer;
+var logger = require('./logger');
 
 var journey = require('journey'),
     static = require('node-static');
@@ -12,7 +12,7 @@ var todo = require('./todo').resource,
     routes = require('./routes');
 
 var options = {
-    port: parseInt(process.argv[2]) || 8000,
+    port: process.env['PORT'] || parseInt(process.argv[2]) || 8000,
     lock: '/tmp/thinglerd.pid'
 };
 
@@ -79,11 +79,13 @@ this.server = http.createServer(function (request, response) {
             body ? response.end(body) : response.end();
             clearTimeout(timer);
 
-            sys.puts([
+            var logMessage = [
                 new(Date)().toJSON(),
                 log.join(' '),
                 [status, http.STATUS_CODES[status], body].join(' ')
-            ].join(' -- '));
+            ].join(' -- ');
+            sys.puts(logMessage);
+            (env === 'production') && logger.log(logMessage);
         }
     });
 });
@@ -98,8 +100,10 @@ if (env === 'production') {
 
 process.on('uncaughtException', function (err) {
     if (env === 'production') {
+        var buffer = new(Buffer)(new(Date)().toUTCString() + ' -- ' + err.stack + '\n');
+        logger.log(buffer);
         fs.open('thinglerd.log', 'a+', 0666, function (e, fd) {
-            var buffer = new(Buffer)(new(Date)().toUTCString() + ' -- ' + err.stack + '\n');
+//            var buffer = new(Buffer)(new(Date)().toUTCString() + ' -- ' + err.stack + '\n');
             fs.write(fd, buffer, 0, buffer.length, null);
         });
     } else {

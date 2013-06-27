@@ -12,8 +12,7 @@ var todo = require('./todo').resource,
     routes = require('./routes');
 
 var options = {
-    //port: parseInt(process.argv[2]) || 8000,
-    port: process.env['PORT'] || 8000,
+    port: process.env['PORT'] || parseInt(process.argv[2]) || 8000,
     lock: '/tmp/thinglerd.pid'
 };
 

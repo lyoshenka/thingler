@@ -1,0 +1,7 @@
+See http://www.rossbates.com/2009/07/data-migration-for-couchdb/
+
+DUMP
+./dump.py http://source-couchdb:5984/msg_db > msg_db.json
+
+LOAD
+./load.py –input=msg_db.json -u USERNAME -p PASSWORD http://target-couchdb:5984/msg_db

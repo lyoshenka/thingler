@@ -1,6 +1,9 @@
 {
   "name": "thingler",
   "version": "1.0.0",
+  "engines": {
+    "node": "0.6.3"
+  },
   "dependencies": {
     "express": "2.2.0",
     "node-static": ">=0.5.6",
